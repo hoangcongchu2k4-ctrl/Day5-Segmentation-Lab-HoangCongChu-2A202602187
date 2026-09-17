@@ -12,18 +12,18 @@ Mã học viên là mã lớp cấp, không cần ghi họ tên trong bản nộ
 
 **Bạn cần điền gì?** “File ZIP đúng tên” là tên file bạn đã tải từ CVAT rồi đặt lại, ví dụ `easy_semantic.zip`. “Hoàn thành mấy ảnh” là số ảnh bạn đã vẽ và Save, không phải số ảnh có trong task. Chưa làm hoặc export lỗi thì ghi `chưa có`, đừng ghi tên một ZIP rỗng. Cột điểm là **điểm tối đa của task**, không phải điểm tự chấm.
 
-| Task | File ZIP đúng tên | Hoàn thành mấy ảnh | Điểm tối đa (coach chấm sau) |
-| :--- | :--- | ---: | ---: |
-| easy_semantic | `easy_semantic.zip` | 3 / 3 | 20 |
-| medium_instance | `medium_instance.zip` | 3 / 3 | 32 |
-| hard_panoptic | `hard_panoptic.zip` | 2 / 2 | 30 |
-| cp1_holes | `cp1_holes.zip` | 1 / 1 | 3 |
-| cp2_slice | `cp2_slice.zip` | 1 / 1 | 3 |
-| cp5_occlusion | `cp5_occlusion.zip` | 1 / 1 | 3 |
-| cp3_thin | `cp3_thin.zip` | 1 / 1 | 3 |
-| cp4_curb | `cp4_curb.zip` | 1 / 1 | 3 |
-| cp6_coverage | `cp6_coverage.zip` | 1 / 1 | 3 |
-| **Tổng tối đa** | | | **100** |
+| Task            | File ZIP đúng tên     | Hoàn thành mấy ảnh | Điểm tối đa (coach chấm sau) |
+| :-------------- | :-------------------- | -----------------: | ---------------------------: |
+| easy_semantic   | `easy_semantic.zip`   |              3 / 3 |                           20 |
+| medium_instance | `medium_instance.zip` |              3 / 3 |                           32 |
+| hard_panoptic   | `hard_panoptic.zip`   |              2 / 2 |                           30 |
+| cp1_holes       | `cp1_holes.zip`       |              1 / 1 |                            3 |
+| cp2_slice       | `cp2_slice.zip`       |              1 / 1 |                            3 |
+| cp5_occlusion   | `cp5_occlusion.zip`   |              1 / 1 |                            3 |
+| cp3_thin        | `cp3_thin.zip`        |              1 / 1 |                            3 |
+| cp4_curb        | `cp4_curb.zip`        |              1 / 1 |                            3 |
+| cp6_coverage    | `cp6_coverage.zip`    |              1 / 1 |                            3 |
+| **Tổng tối đa** |                       |                    |                      **100** |
 
 Không tự điền điểm nếu chưa có phản hồi từ người chấm. Nếu export lỗi, ghi task, trạng thái Save và thông báo đã gửi coach.
 
@@ -56,8 +56,8 @@ Ví dụ cách giải thích, không phải đáp án cho ảnh của bạn: “
 
 **“Ca” là một vùng cụ thể khiến bạn phải dừng lại và chọn cách hiểu**, không nhất thiết là ba lỗi. Với mỗi dòng, ghi vị trí, hai khả năng bạn đã cân nhắc, dấu hiệu nhìn thấy hoặc quy tắc đã dùng, rồi quyết định của bạn. Nếu quy tắc chưa đủ rõ, viết một câu hỏi mà coach có thể trả lời. Ví dụ: “mép bó vỉa trong `cp4_curb`: road hay sidewalk? Tôi chọn sidewalk vì phần nền nâng cao; xin xác nhận ranh tại chỗ màu giống mặt đường.” Ba dòng có thể đến từ ba task khác nhau.
 
-| Ảnh/vị trí | Hai cách hiểu có thể | Quy tắc/chứng cứ | Quyết định hoặc câu hỏi cho coach |
-| :--- | :--- | :--- | :--- |
-| 1. `hard_panoptic` / Xe ở góc tối | Phân định giữa class `car` hay `truck` nhỏ | Dựa vào chiều dài tổng thể và tỉ lệ khung cửa kính | Chọn `car` vì kích thước tương ứng với xe du lịch thông thường. |
-| 2. `cp5_occlusion` / Vật thể bị che khuất | Vẽ trọn vẹn phần bị che khuất hay chỉ vẽ phần lộ diện | Quy tắc gán nhãn thực tế theo vùng nhìn thấy | Chỉ vẽ phần thân xe thực tế lộ ra, không nội suy phần bị che bởi cột điện. |
-| 3. `cp3_thin` / Chi tiết góc cạnh thanh mảnh | Sử dụng công cụ Polygon nối đỉnh hay Brush tô tự do | Độ sắc nét và yêu cầu khắt khe về ranh giới đối tượng | Sử dụng `Polygon` để kiểm soát tốt các góc bo nhỏ và đường viền sắc nét. |
+| Ảnh/vị trí                                   | Hai cách hiểu có thể                                  | Quy tắc/chứng cứ                                      | Quyết định hoặc câu hỏi cho coach                                          |
+| :------------------------------------------- | :---------------------------------------------------- | :---------------------------------------------------- | :------------------------------------------------------------------------- |
+| 1. `hard_panoptic` / Xe ở góc tối            | Phân định giữa class `car` hay `truck` nhỏ            | Dựa vào chiều dài tổng thể và tỉ lệ khung cửa kính    | Chọn `car` vì kích thước tương ứng với xe du lịch thông thường.            |
+| 2. `cp5_occlusion` / Vật thể bị che khuất    | Vẽ trọn vẹn phần bị che khuất hay chỉ vẽ phần lộ diện | Quy tắc gán nhãn thực tế theo vùng nhìn thấy          | Chỉ vẽ phần thân xe thực tế lộ ra, không nội suy phần bị che bởi cột điện. |
+| 3. `cp3_thin` / Chi tiết góc cạnh thanh mảnh | Sử dụng công cụ Polygon nối đỉnh hay Brush tô tự do   | Độ sắc nét và yêu cầu khắt khe về ranh giới đối tượng | Sử dụng `Polygon` để kiểm soát tốt các góc bo nhỏ và đường viền sắc nét.   |
