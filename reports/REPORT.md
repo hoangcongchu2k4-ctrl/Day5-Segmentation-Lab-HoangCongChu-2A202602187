@@ -1,0 +1,63 @@
+# Mẫu tham khảo để điền REPORT.md
+
+**Cách dùng:** Bản cần nộp đã có sẵn ở [`REPORT.md`](../REPORT.md) trong thư mục gốc của fork; mở file đó và điền vào chỗ `…`. File này giải thích từng mục và có ví dụ để tham khảo khi bạn bị kẹt. Giữ nguyên bốn mục và bảng để coach đọc bài nhanh; **không chép ví dụ thành câu trả lời của mình**.
+
+- Mã học viên theo lớp:2A202602187
+- Ngày / CVAT local:17/09/2026
+- Công cụ đã dùng: Brush / Polygon / Intelligent Scissors / gợi ý tự động có sẵn / khác: …
+
+Mã học viên là mã lớp cấp, không cần ghi họ tên trong bản nộp nếu kênh lớp đã nhận diện bạn. Ở dòng công cụ, giữ lại những công cụ bạn thật sự dùng; không có SAM cũng hoàn toàn bình thường.
+
+## 1. Bài đã nộp
+
+**Bạn cần điền gì?** “File ZIP đúng tên” là tên file bạn đã tải từ CVAT rồi đặt lại, ví dụ `easy_semantic.zip`. “Hoàn thành mấy ảnh” là số ảnh bạn đã vẽ và Save, không phải số ảnh có trong task. Chưa làm hoặc export lỗi thì ghi `chưa có`, đừng ghi tên một ZIP rỗng. Cột điểm là **điểm tối đa của task**, không phải điểm tự chấm.
+
+| Task | File ZIP đúng tên | Hoàn thành mấy ảnh | Điểm tối đa (coach chấm sau) |
+| :--- | :--- | ---: | ---: |
+| easy_semantic | `easy_semantic.zip` | 3 / 3 | 20 |
+| medium_instance | `medium_instance.zip` | 3 / 3 | 32 |
+| hard_panoptic | `hard_panoptic.zip` | 2 / 2 | 30 |
+| cp1_holes | `cp1_holes.zip` | 1 / 1 | 3 |
+| cp2_slice | `cp2_slice.zip` | 1 / 1 | 3 |
+| cp5_occlusion | `cp5_occlusion.zip` | 1 / 1 | 3 |
+| cp3_thin | `cp3_thin.zip` | 1 / 1 | 3 |
+| cp4_curb | `cp4_curb.zip` | 1 / 1 | 3 |
+| cp6_coverage | `cp6_coverage.zip` | 1 / 1 | 3 |
+| **Tổng tối đa** | | | **100** |
+
+Không tự điền điểm nếu chưa có phản hồi từ người chấm. Nếu export lỗi, ghi task, trạng thái Save và thông báo đã gửi coach.
+
+Ví dụ cách ghi lỗi export: “`cp3_thin`: đã Save 1/1 ảnh, CVAT không hiện Segmentation mask 1.1 lúc 14:10, đã báo coach”. Bạn vẫn ghi đúng tình trạng, không tự đổi format.
+
+## 2. Một quyết định trước khi dùng gợi ý
+
+**Mục này hỏi cách bạn tự ra quyết định.** Chọn object đầu tiên bạn tự vẽ ở `medium_instance`, trước khi mở bất kỳ đề xuất tự động nào cho object đó. “Vị trí” chỉ cần mô tả đủ để tìm lại, chẳng hạn “xe bên trái, nửa dưới ảnh”; nếu nhớ tên file JPG thì ghi luôn. “Quy tắc biên” nghĩa là lý do bạn dừng mask ở đâu, nhất là mép ảnh hoặc vật che. Không cần ảnh chụp riêng nếu lớp không yêu cầu.
+
+- Ảnh, vị trí và object Medium đầu tiên tự vẽ: Ảnh `000000017627.jpg`, khu vực xe ô tô (`car`) nằm ở góc dưới bên phải ảnh.
+- Class và quy tắc tôi dùng để chọn biên: Class `car`; quy tắc vẽ bám sát đường viền ngoại vi của thân xe, ôm theo mép lốp xe tiếp xúc với mặt đường và các góc kính chắn gió.
+- Nếu dùng gợi ý sau đó: Vùng gợi ý tự động bắt khá tốt tổng thể thân xe nhưng bị tràn một ít ra ngoài phần nền asphalt; tôi đã thực hiện chỉnh sửa lại các điểm mút (edit points) để thu gọn biên về đúng ranh giới thực tế của xe.
+- Nếu không dùng gợi ý: Đã dùng kết hợp gợi ý tự động; tuy nhiên đối với các chi tiết góc khuất, tôi áp dụng việc tự căn chỉnh thủ công các điểm polygon để đảm bảo biên bám khít đối tượng.
+
+Ví dụ cách giải thích, không phải đáp án cho ảnh của bạn: “Tôi chỉ vẽ phần thân xe còn nhìn thấy; phần sau cột bị che nên không đoán đường biên phía sau.” Nếu công cụ đưa vùng tràn ra nền, hãy ghi đã xóa vùng nào và vì sao. “Gợi ý đúng” cũng cần nói bạn đã kiểm điều gì rồi mới giữ.
+
+## 3. Một lỗi tôi tìm thấy và sửa
+
+**Chọn một lỗi có thật trong bài của bạn**, không cần lỗi lớn nhất. Một dòng tốt có thể là: “Tại `cp2_slice`, hai xe cùng lớp bị gộp thành một mask; nhìn thấy khe giữa hai xe; tôi tách thành hai object, Save và export lại.” Nếu chưa sửa được do công cụ lỗi, nói rõ đã thử gì và cần coach hỗ trợ gì; đừng ghi “đã sửa” khi chưa sửa.
+
+- Task/ảnh/vùng: `medium_instance` / `000000017627.jpg` / vùng ô tô (`car`) phía bên phải
+- Lỗi thuộc loại: biên sai lớp / thiếu-thừa vật / gộp-tách / biên / phủ vùng / khác: biên
+- Bằng chứng tôi nhìn thấy: Một số điểm polygon của đối tượng bị dịch chuyển chờm ra ngoài viền lốp và gương xe.
+- Quy tắc và hành động sửa: Kéo dịch chuyển các đỉnh polygon lùi lại để ôm khít đường viền thực tế của phương tiện, loại bỏ các điểm thừa bị tràn nền.
+- Sau sửa đã Save và export lại chưa? Đã Save và export lại file ZIP hoàn chỉnh.
+
+**Nếu đã xem điểm tự đánh giá trên GitHub Actions hoặc chạy scorer:** ghi một kết quả liên quan lỗi bạn vừa sửa, chẳng hạn “`easy_semantic`: per-class IoU của `sidewalk` tăng sau khi tôi sửa ranh bó vỉa, Save và export lại”; nếu chưa có điểm, ghi “chưa có”. Xem [hướng dẫn xem Summary hoặc chạy dự phòng](../docs/SELF_SCORING.md). Kết quả ba tier là tổng **/82**, không tự điền PASS, top 3 hoặc bonus. Đừng đưa ground truth vào fork.
+
+## 4. Ba ca chưa chắc hoặc đã cân nhắc
+
+**“Ca” là một vùng cụ thể khiến bạn phải dừng lại và chọn cách hiểu**, không nhất thiết là ba lỗi. Với mỗi dòng, ghi vị trí, hai khả năng bạn đã cân nhắc, dấu hiệu nhìn thấy hoặc quy tắc đã dùng, rồi quyết định của bạn. Nếu quy tắc chưa đủ rõ, viết một câu hỏi mà coach có thể trả lời. Ví dụ: “mép bó vỉa trong `cp4_curb`: road hay sidewalk? Tôi chọn sidewalk vì phần nền nâng cao; xin xác nhận ranh tại chỗ màu giống mặt đường.” Ba dòng có thể đến từ ba task khác nhau.
+
+| Ảnh/vị trí | Hai cách hiểu có thể | Quy tắc/chứng cứ | Quyết định hoặc câu hỏi cho coach |
+| :--- | :--- | :--- | :--- |
+| 1. `hard_panoptic` / Xe ở góc tối | Phân định giữa class `car` hay `truck` nhỏ | Dựa vào chiều dài tổng thể và tỉ lệ khung cửa kính | Chọn `car` vì kích thước tương ứng với xe du lịch thông thường. |
+| 2. `cp5_occlusion` / Vật thể bị che khuất | Vẽ trọn vẹn phần bị che khuất hay chỉ vẽ phần lộ diện | Quy tắc gán nhãn thực tế theo vùng nhìn thấy | Chỉ vẽ phần thân xe thực tế lộ ra, không nội suy phần bị che bởi cột điện. |
+| 3. `cp3_thin` / Chi tiết góc cạnh thanh mảnh | Sử dụng công cụ Polygon nối đỉnh hay Brush tô tự do | Độ sắc nét và yêu cầu khắt khe về ranh giới đối tượng | Sử dụng `Polygon` để kiểm soát tốt các góc bo nhỏ và đường viền sắc nét. |
